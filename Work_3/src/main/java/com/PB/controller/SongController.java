@@ -2,8 +2,9 @@ package com.PB.controller;
 
 import com.PB.error.SongNotFoundException;
 import com.PB.error.SongValidateException;
-import com.PB.model.NewSong;
+import com.PB.model.CreateSong;
 import com.PB.model.Song;
+import com.PB.model.Songs;
 import com.PB.service.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,19 +33,19 @@ public class SongController {
     }
 
     @GetMapping
-    public List<Song> getAll(){
+    public Songs getAll(){
         return service.getAll();
     }
 
     @PostMapping
-    public Song add(@RequestBody NewSong nsong){
+    public Song add(@RequestBody CreateSong nsong){
         Song song = new Song(nsong.getArtistName(), nsong.getName(), nsong.getAuditions());
         validate(song);
         return service.add(song);
     }
 
-    @PostMapping(path = "/{id}")
-    public Song update(@PathVariable int id,@RequestBody NewSong nsong){
+    @PutMapping(path = "/{id}")
+    public Song update(@PathVariable int id,@RequestBody CreateSong nsong){
         Song song = new Song(nsong.getArtistName(), nsong.getName(), nsong.getAuditions());
         validate(song);
         return service.update(id, song);

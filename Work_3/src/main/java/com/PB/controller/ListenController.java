@@ -3,6 +3,7 @@ package com.PB.controller;
 import com.PB.error.SongNotFoundException;
 import com.PB.error.SongValidateException;
 import com.PB.model.ListenSong;
+import com.PB.model.ListenSongs;
 import com.PB.model.Song;
 import com.PB.model.Songs;
 import com.PB.service.SongService;
@@ -37,20 +38,20 @@ public class ListenController {
             throw new SongNotFoundException("limit can not be null or less than one");
         }
 
-        List<Song> songs = service.getAll();
-        songs.sort((a, b) -> b.getAuditions() - a.getAuditions());
-        return songs.subList(0, Math.min(limit, songs.size()));
+        Songs songs = service.getAll();
+        songs.getSongs().sort((a, b) -> b.getAuditions() - a.getAuditions());
+        return songs.getSongs().subList(0, Math.min(limit, songs.getSongs().size()));
     }
 
     @PostMapping("/listen")
-    public List<Song> listenSongByIds(@RequestBody Songs songs){
+    public List<Song> listenSongByIds(@RequestBody ListenSongs listenSongs){
 
         List<Song> songList = new ArrayList<>();
-        for (int sng: songs.getSongs()) {
+        for (int sng: listenSongs.getSongs()) {
             Song song;
             try {
                 song = service.get(sng);
-                song.setAuditions(song.getAuditions() + songs.getAuditions());
+                song.setAuditions(song.getAuditions() + listenSongs.getAuditions());
                 service.update(sng, song);
             } catch (SongNotFoundException ex) {
                 continue;

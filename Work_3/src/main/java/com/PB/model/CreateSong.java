@@ -1,6 +1,6 @@
 package com.PB.model;
 
-public class NewSong {
+public class CreateSong {
     private String artistName;
     private String name;
     private int auditions;

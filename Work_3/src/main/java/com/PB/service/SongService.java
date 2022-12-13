@@ -2,6 +2,7 @@ package com.PB.service;
 
 import com.PB.error.SongNotFoundException;
 import com.PB.model.Song;
+import com.PB.model.Songs;
 import com.PB.repository.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class SongService {
         return repo.get(id);
     }
 
-    public List<Song> getAll(){
+    public Songs getAll(){
         return repo.findAll();
     }
 

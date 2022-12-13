@@ -2,11 +2,12 @@ package com.PB.repository;
 
 import com.PB.error.SongNotFoundException;
 import com.PB.model.Song;
+import com.PB.model.Songs;
 
 import java.util.List;
 
 public interface SongRepository {
-    List<Song> findAll() throws SongNotFoundException;
+    Songs findAll() throws SongNotFoundException;
 
     Song add(Song song);
 

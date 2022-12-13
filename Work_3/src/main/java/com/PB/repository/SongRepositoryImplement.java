@@ -2,6 +2,7 @@ package com.PB.repository;
 
 import com.PB.error.SongNotFoundException;
 import com.PB.model.Song;
+import com.PB.model.Songs;
 import lombok.NonNull;
 import org.springframework.stereotype.Repository;
 
@@ -21,8 +22,8 @@ public class SongRepositoryImplement implements SongRepository{
     }
 
     @Override
-    public List<Song> findAll() {
-        return new ArrayList<>(data.values());
+    public Songs findAll() {
+        return new Songs (new ArrayList<>(data.values()));
     }
 
     @Override

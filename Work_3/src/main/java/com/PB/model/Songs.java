@@ -3,22 +3,17 @@ package com.PB.model;
 import java.util.List;
 
 public class Songs {
-    private int auditions;
-    private List<Integer> songs;
+    List<Song> songs;
 
-    public int getAuditions() {
-        return auditions;
+    public Songs(List<Song> songs) {
+        this.songs = songs;
     }
 
-    public void setAuditions(int auditions) {
-        this.auditions = auditions;
-    }
-
-    public List<Integer> getSongs() {
+    public List<Song> getSongs() {
         return songs;
     }
 
-    public void setSongs(List<Integer> songs) {
+    public void setSongs(List<Song> songs) {
         this.songs = songs;
     }
 }
