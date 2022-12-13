@@ -1,6 +1,6 @@
 server:
   servlet:
-    context-path: /api
+    context-path:
   shutdown: GRACEFUL
   forward-headers-strategy: NATIVE
 
