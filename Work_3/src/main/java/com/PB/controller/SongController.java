@@ -37,7 +37,7 @@ public class SongController {
         return service.getAll();
     }
 
-    @PostMapping
+    @PutMapping
     public Song add(@RequestBody CreateSong nsong){
         Song song = new Song(nsong.getArtistName(), nsong.getName(), nsong.getAuditions());
         validate(song);
